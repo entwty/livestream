@@ -43,6 +43,10 @@ jspm_packages/
 Server/media/*
 Server/sessions/*
 Server/thumbnails/*
+
+!Server/media/.gitkeep
+!Server/sessions/.gitkeep
+!Server/thumbnails/.gitkeep
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
