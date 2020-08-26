@@ -7,6 +7,8 @@ let UserSchema = new Schema({
     username: String,
     email : String,
     password: String,
+    //role added
+    role:String,
     stream_key : String,
 });
 
