@@ -10,6 +10,7 @@ module.exports = {
         path : path.resolve(__dirname, 'public')
     },
     module : {
+        
         rules : [
             {
                 test: /\.s?[ac]ss$/,

@@ -1,3 +1,4 @@
+
 const express = require('express'),
     router = express.Router(),
     User = require('../database/Schema').User;
@@ -14,6 +15,7 @@ router.get('/',
                     return;
                 if (user) {
                     res.json({
+
                         stream_key : user.stream_key
                     });
                 }
@@ -22,6 +24,7 @@ router.get('/',
             res.json({});
         }
     });
+
 
 module.exports = router;
 

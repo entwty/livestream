@@ -22,5 +22,6 @@ router.get('/info',
             });
         }
     });
+   
 module.exports = router;
 

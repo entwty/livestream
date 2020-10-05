@@ -5,6 +5,7 @@ import './LiveStreams.scss';
 import config from '../../server/config/default';
 
 
+
 export default class Navbar extends React.Component {
 
     constructor(props) {
@@ -12,8 +13,10 @@ export default class Navbar extends React.Component {
         this.state = {
             live_streams: []
         }
+
     }
 
+    
     componentDidMount() {
         this.getLiveStreams();
     }
@@ -41,12 +44,12 @@ export default class Navbar extends React.Component {
             });
         });
     }
-
+//Canlı yayınların listelendiği sayfa
     render() {
         let streams = this.state.live_streams.map((stream, index) => {
             return (
                 <div className="stream col-xs-12 col-sm-12 col-md-3 col-lg-4" key={index}>
-                    <span className="live-label">LIVE</span>
+                    <span className="live-label">Canlı</span>
                     <Link to={'/stream/' + stream.username}>
                         <div className="stream-thumbnail">
                             <img src={'/thumbnails/' + stream.stream_key + '.png'}/>
@@ -64,7 +67,7 @@ export default class Navbar extends React.Component {
 
         return (
             <div className="container mt-5">
-                <h4>Live Streams</h4>
+                <h4>Canlı Yayınlar</h4>
                 <hr className="my-4"/>
 
                 <div className="streams row">

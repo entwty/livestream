@@ -2,6 +2,8 @@ import React from 'react';
 import videojs from 'video.js'
 import axios from 'axios';
 import config from '../../server/config/default';
+import Message from './Message';
+import { Grid } from 'semantic-ui-react';
 
 
 export default class VideoPlayer extends React.Component {
@@ -14,7 +16,7 @@ export default class VideoPlayer extends React.Component {
             videoJsOptions: null
         }
     }
-
+//Chatin Olucağı sayfa 
     componentDidMount() {
 
         axios.get('/user', {
@@ -49,15 +51,26 @@ export default class VideoPlayer extends React.Component {
 
     render() {
         return (
+            <Grid>
             <div className="row">
-                <div className="col-xs-12 col-sm-12 col-md-10 col-lg-8 mx-auto mt-5">
+                <div className="col-xs-10 col-sm-10 col-md-8 col-lg-8 mx-auto mt-5">
                     {this.state.stream ? (
                         <div data-vjs-player>
                             <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered"/>
                         </div>
                     ) : ' Loading ... '}
                 </div>
+         
+                <div className="col-xs-4 col-sm-4 col-md-3 col-lg-4 mx-auto mt-5">
+            <Message/>
             </div>
+            </div>
+ 
+  
+            </Grid>
         )
+ 
     }
+
+
 }
