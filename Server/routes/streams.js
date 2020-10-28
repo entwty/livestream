@@ -11,6 +11,7 @@ router.get('/info',
             for (let stream in streams) {
                 if (!streams.hasOwnProperty(stream)) continue;
                 query.$or.push({stream_key : stream});
+                
             }
 
             User.find(query,(err, users) => {

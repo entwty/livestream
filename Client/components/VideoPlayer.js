@@ -30,14 +30,14 @@ export default class VideoPlayer extends React.Component {
                     autoplay: false,
                     controls: true,
                     sources: [{
-                        src: 'http://127.0.0.1:' + config.rtmp_server.http.port + '/live/' + res.data.stream_key + '/index.m3u8',
+                        src: 'http://89.43.28.196:' + config.rtmp_server.http.port + '/live/' + res.data.stream_key + '/index.m3u8',
                         type: 'application/x-mpegURL'
                     }],
                     fluid: true,
                 }
             }, () => {
                 this.player = videojs(this.videoNode, this.state.videoJsOptions, function onPlayerReady() {
-                    console.log('onPlayerReady', this)
+    
                 });
             });
         })
@@ -51,9 +51,8 @@ export default class VideoPlayer extends React.Component {
 
     render() {
         return (
-            <Grid>
-            <div className="row">
-                <div className="col-xs-10 col-sm-10 col-md-8 col-lg-8 mx-auto mt-5">
+ 
+                <div className="col-xs-5 col-sm-8 col-md-2 col-lg-7 mx-auto mt-4">
                     {this.state.stream ? (
                         <div data-vjs-player>
                             <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered"/>
@@ -61,13 +60,11 @@ export default class VideoPlayer extends React.Component {
                     ) : ' Loading ... '}
                 </div>
          
-                <div className="col-xs-4 col-sm-4 col-md-3 col-lg-4 mx-auto mt-5">
-            <Message/>
-            </div>
-            </div>
+
+
  
   
-            </Grid>
+
         )
  
     }

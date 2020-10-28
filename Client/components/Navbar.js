@@ -17,11 +17,7 @@ export default class Navbar extends React.Component {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ml-auto">
-                            {/* <li className="nav-item float-right">
-                                <Link className={'nav-link'} to={'/settings'}>
-                                    Go Live
-                                </Link>
-                            </li> */}
+                        
                             <li className="nav-item float-right">
                                 <a className="nav-link" href="/Logout">Çıkış Yap</a>
                             </li>

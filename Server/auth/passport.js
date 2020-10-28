@@ -2,23 +2,10 @@ const config = require('../config/default');
 
 const passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    JwtStrategy = require('passport-jwt').Strategy,
-    ExtractJwt = require('passport-jwt').ExtractJwt,
     User = require('../database/Schema').User,
     shortid = require('shortid');
  
-    var options = {};
-    options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-    options.secretOrKey = config.server.secret; 
-    passport.serializeUser(function(user, done) {
-        done(null, user.id);
-      });
-      
-      passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-          done(err, user);
-        });
-      });
+
 passport.use('localRegister', new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',
@@ -70,12 +57,21 @@ passport.use('localLogin', new LocalStrategy({
             if (!user.validPassword(password)){
                 return done(null, false, req.flash('password', 'Oops! Wrong password.'));
             }
-       
-            return done(null, user,req.user);
+
+            return done(null, user);
           
         })
-        console.log(req.user);
+   
     }));
-  
+
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+    });
+    passport.deserializeUser(function(id, done) {
+        User.findById(id, function (err, user) {
+            if (err) { return done(err); }
+            done(null, user);
+        });
+    });
 passport.Strategy
 module.exports = passport;
